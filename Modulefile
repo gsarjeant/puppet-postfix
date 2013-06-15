@@ -1,0 +1,8 @@
+name    'nrvale0-postfix'
+version '0.1.0'
+author 'nrvale0@gmail.com'
+license 'Apache License, Version 2.0'
+summary 'Install postfix from packages on Debian.'
+description 'Install postfix from packages on Debian.'
+project_page 'http://github.com/nrvale0/puppet-postfix'
+source 'git://github.com/nrvale0/puppet-postfix.git'
