@@ -1,6 +1,6 @@
 class postfix::params {
   case $::osfamily {
-    'debian': {
+    'debian','redhat': {
       $package = 'postfix'
       $service = 'postfix'
     }
