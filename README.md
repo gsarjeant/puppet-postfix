@@ -22,3 +22,5 @@ Support
 -------
 
 Please log tickets and issues at [the project's site](http://github.com/nrvale0/puppet-postfix).
+
+[![Build Status](https://travis-ci.org/nrvale0/puppet-postfix.png)](https://travis-ci.org/nrvale0/puppet-postfix)
