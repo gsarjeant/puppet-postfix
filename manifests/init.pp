@@ -24,5 +24,4 @@ class postfix(
     enable => true,
     subscribe => File[$config, '/etc/mailname'],
   }
-
 }
