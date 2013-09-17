@@ -1,0 +1,28 @@
+{
+  "name": "nrvale0-postfix",
+  "version": "1.0.0",
+  "source": "git://github.com/nrvale0/puppet-postfix.git",
+  "author": "nrvale0@gmail.com",
+  "license": "Apache License, Version 2.0",
+  "summary": "Install postfix from distro package.",
+  "description": "Install postfix from distro package.",
+  "project_page": "http://github.com/nrvale0/puppet-postfix",
+  "dependencies": [
+    {
+      "name": "puppetlabs/stdlib",
+      "version_requirement": "3.2.0"
+    }
+  ],
+  "types": [
+
+  ],
+  "checksums": {
+    "Modulefile": "40043188192990e8b860a90a8716c551",
+    "README.md": "4c94778849ef3577b75af7d772368aac",
+    "manifests/init.pp": "851dfeb6e9a1839b2f22015d081b030c",
+    "manifests/params.pp": "355a9d22cfa37fcc371ea07a7d1ac43c",
+    "templates/main.cf.erb": "1c71516048314e43b15d6194183c1193",
+    "templates/warning.erb": "36f661cbaf81d6ba66ec27f0b37449d3",
+    "tests/init.pp": "e0f4d8ba5bf459dfa02bd77a1295c57c"
+  }
+}
