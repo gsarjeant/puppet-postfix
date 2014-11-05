@@ -1,10 +1,20 @@
+# == Class postfix::params
+#
+# This class is meant to be called from postfix
+# It sets variables according to platform
+#
 class postfix::params {
   case $::osfamily {
-    'debian','redhat': {
-      $package = 'postfix'
-      $config = '/etc/postfix/main.cf'
-      $service = 'postfix'
+    'Debian': {
+      $package_name = 'postfix'
+      $service_name = 'postfix'
     }
-    default: {fail("OS family ${::osamily} not supported!")}
+    'RedHat', 'Amazon': {
+      $package_name = 'postfix'
+      $service_name = 'postfix'
+    }
+    default: {
+      fail("${::operatingsystem} not supported")
+    }
   }
 }

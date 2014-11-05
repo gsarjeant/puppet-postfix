@@ -1,27 +1,21 @@
-class postfix(
-  $version = hiera('postfix::version', 'installed'),
-  $relayhost = hiera('postfix::relayhost', '')
-) inherits postfix::params {
+# == Class: postfix
+#
+# Full description of class postfix here.
+#
+# === Parameters
+#
+# [*sample_parameter*]
+#   Explanation of what this parameter affects and what it defaults to.
+#
+class postfix (
+  $package_name = $::postfix::params::package_name,
+  $service_name = $::postfix::params::service_name,
+) inherits ::postfix::params {
 
-  package { $package: ensure => $version, }
+  # validate parameters here
 
-  File { owner => 'root', group => 'root', mode => '0644', }
-
-  file { '/etc/mailname':
-    ensure => file,
-    content => "${::fqdn}",
-  }
-
-  file { $config:
-    ensure => file,
-    content => template("${module_name}/warning.erb",
-      "${module_name}/main.cf.erb"),
-    require => Package[$package],
-  }
-
-  service { $service:
-    ensure => running,
-    enable => true,
-    subscribe => File[$config, '/etc/mailname'],
-  }
+  class { '::postfix::install': } ->
+  class { '::postfix::config': } ~>
+  class { '::postfix::service': } ->
+  Class['::postfix']
 }

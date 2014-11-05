@@ -1,2 +1,7 @@
-*.swp
-*~
+.*.sw?
+pkg
+spec/fixtures
+.rspec_system
+.vagrant
+.bundle
+vendor
