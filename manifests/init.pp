@@ -8,11 +8,21 @@
 #   Explanation of what this parameter affects and what it defaults to.
 #
 class postfix (
+
+  $relayhost = undef,
   $package_name = $::postfix::params::package_name,
+  $package_ensure = undef,
   $service_name = $::postfix::params::service_name,
+  $service_ensure = $::postfix::params::service_ensure,
+  $service_enable = $::postfix::params::service_enable,
+
 ) inherits ::postfix::params {
 
-  # validate parameters here
+  if $package_ensure { validate_string($package_ensure) }
+  if $relayhost { valudate_string($relayhost) }
+
+  multi_validate_re($package_name, $service_name, $service_ensure, '^.+$')
+  validate_bool($service_enable)
 
   class { '::postfix::install': } ->
   class { '::postfix::config': } ~>

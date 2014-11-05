@@ -6,8 +6,8 @@
 class postfix::service {
 
   service { $::postfix::service_name:
-    ensure     => running,
-    enable     => true,
+    ensure     => $::postfix::service_ensure,
+    enable     => $::postfix::service_enable,
     hasstatus  => true,
     hasrestart => true,
   }

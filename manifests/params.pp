@@ -6,15 +6,18 @@
 class postfix::params {
   case $::osfamily {
     'Debian': {
-      $package_name = 'postfix'
-      $service_name = 'postfix'
     }
     'RedHat', 'Amazon': {
-      $package_name = 'postfix'
-      $service_name = 'postfix'
     }
     default: {
       fail("${::operatingsystem} not supported")
     }
   }
+
+  $package_name = 'postfix'
+  $package_ensure = 'installed'
+
+  $service_name = 'postfix'
+  $service_ensure = 'running'
+  $service_enable = true
 }
