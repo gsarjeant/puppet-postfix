@@ -19,7 +19,7 @@ class postfix::params {
 
   $config = '/etc/postfix/master.conf'
 
-  $service_name = 'postfix'
+  $service_name = 'master'
   $service_ensure = 'running'
   $service_enable = true
 }

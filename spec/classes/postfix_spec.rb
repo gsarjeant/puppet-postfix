@@ -16,8 +16,8 @@ describe 'postfix' do
         it { should contain_class('postfix::config') }
         it { should contain_class('postfix::service').that_subscribes_to('postfix::config') }
 
-        it { should contain_service('postfix') }
-        it { should contain_package('postfix').with_ensure('present') }
+        it { should contain_service('master') }
+        it { should contain_package('postfix').with_ensure('installed') }
       end
     end
   end

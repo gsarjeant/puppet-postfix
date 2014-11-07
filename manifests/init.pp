@@ -11,7 +11,7 @@ class postfix (
 
   $relayhost = undef,
   $package_name = $::postfix::params::package_name,
-  $package_ensure = undef,
+  $package_ensure = $::postfix::params::package_ensure,
   $config = $::postfix::params::config,
   $service_name = $::postfix::params::service_name,
   $service_ensure = $::postfix::params::service_ensure,
@@ -21,7 +21,7 @@ class postfix (
 
   if $relayhost { validate_re($relayhost, '^.+$') }
   multi_validate_re($package_name, $service_name, $service_ensure, '^.+$')
-  if $package_ensure { validate_re($package_ensure, '^.+$')
+  if $package_ensure { validate_re($package_ensure, '^.+$') }
   validate_absolute_path($config)
   validate_bool($service_enable)
 

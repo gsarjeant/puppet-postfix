@@ -9,7 +9,7 @@ describe 'postfix', :type => 'class' do
 
     it { 
       should contain_package('postfix').with( {'name' => 'postfix' } )
-      should contain_service('postfix').with( {'name' => 'postfix' } )
+      should contain_service('master').with( {'name' => 'postfix' } )
     }
   end
 
@@ -20,7 +20,7 @@ describe 'postfix', :type => 'class' do
 
     it {
       should contain_package('postfix').with( {'name' => 'postfix' } )
-      should contain_service('postfix').with( {'name' => 'postfix' } )
+      should contain_service('master').with( {'name' => 'postfix' } )
     }
   end
 end
