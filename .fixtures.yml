@@ -1,6 +1,6 @@
 fixtures:
   repositories:
     stdlib: 'git://github.com/puppetlabs/puppetlabs-stdlib.git'
-    multi_validatre_re: 'git://github.com/nrvale0/puppet-postfix.git'
+    multi_validatre_re: 'git://github.com/nrvale0/puppet-multi_validate_re.git'
   symlinks:
     postfix: "#{source_dir}"
