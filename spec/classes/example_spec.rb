@@ -29,7 +29,7 @@ describe 'postfix' do
         :operatingsystem => 'Nexenta',
       }}
 
-      it { expect { should contain_package('postfix') }.to raise_error(Puppet::Error, /Nexenta not supported/) }
+      it { expect { should contain_package('postfix') }.to raise_error(Puppet::Error, /not supported/) }
     end
   end
 end

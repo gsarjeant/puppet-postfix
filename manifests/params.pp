@@ -17,6 +17,8 @@ class postfix::params {
   $package_name = 'postfix'
   $package_ensure = 'installed'
 
+  $config = '/etc/postfix/master.conf'
+
   $service_name = 'postfix'
   $service_ensure = 'running'
   $service_enable = true
