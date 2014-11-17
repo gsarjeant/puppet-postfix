@@ -9,7 +9,7 @@ class postfix::config {
   if $relayhost {
     ini_setting { 'Postfix relayhost setting':
       ensure  => present,
-      path    => $::postfix::config,
+      path    => $::postfix::params::config,
       section => '',
       setting => 'relayhost',
       value   => $relayhost,
