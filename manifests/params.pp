@@ -5,10 +5,7 @@
 #
 class postfix::params {
   case $::osfamily {
-    'Debian': {
-    }
-    'RedHat', 'Amazon': {
-    }
+    'Debian','RedHat','Amazon': {}
     default: {
       fail("${::operatingsystem} not supported")
     }
@@ -19,7 +16,7 @@ class postfix::params {
 
   $config = '/etc/postfix/master.conf'
 
-  $service_name = 'master'
+  $service_name = 'postfix'
   $service_ensure = 'running'
   $service_enable = true
 }

@@ -20,7 +20,11 @@ describe 'postfix class' do
 
     describe service('postfix') do
       it { is_expected.to be_enabled }
+    end
+
+    describe process('master') do
       it { is_expected.to be_running }
     end
+
   end
 end
