@@ -17,20 +17,20 @@ class postfix::config {
   if $relayhost {
     validate_re($relayhost, '^.+$')
     file_line { 'relayhost setting':
-      ensure  => present,
-      path    => $config,
-      line => "relayhost = ${relayhost}",
-      match => "^relayhost\s*=\s*.*$",
+      ensure => present,
+      path   => $config,
+      line   => "relayhost = ${relayhost}",
+      match  => '^relayhost\s*=\s*.*$',
     }
   }
 
   if $myorigin {
     validate_re($myorigin, '^.+$')
     file_line { 'myorigin setting':
-      ensure  => present,
-      path    => $config,
-      line => "myorigin = ${myorigin}",
-      match => "^myorigin\s*=\s*.*$",
+      ensure => present,
+      path   => $config,
+      line   => "myorigin = ${myorigin}",
+      match  => '^myorigin\s*=\s*.*$',
     }
   }
 }
