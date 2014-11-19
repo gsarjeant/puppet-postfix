@@ -4,7 +4,7 @@
 #
 class postfix::config {
 
-  unless $caller_module_name == $module_name {
+  if $caller_module_name != $module_name {
     fail("This class is private and cannot be called from ${caller_module_name}.")
   }
 
