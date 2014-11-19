@@ -8,7 +8,7 @@ class postfix::service {
   unless $caller_module_name == $module_name {
     fail("This class is private and cannot be called from ${caller_module_name}.")
   }
- 
+
   service { $::postfix::service_name:
     ensure     => $::postfix::service_ensure,
     enable     => $::postfix::service_enable,

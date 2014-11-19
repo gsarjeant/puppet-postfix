@@ -8,7 +8,7 @@ class postfix::params {
     fail("This class is private and cannot be called from ${caller_module_name}.")
   }
 
- case $::osfamily {
+  case $::osfamily {
     'Debian','RedHat','Amazon': {}
     default: {
       fail("${::operatingsystem} not supported")
