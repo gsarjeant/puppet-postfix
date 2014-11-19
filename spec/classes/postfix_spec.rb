@@ -26,7 +26,7 @@ describe 'postfix' do
         let (:params) {{ 'relayhost' => 'smtprelay.localdomain' }}
         it { should contain_file_line('relayhost setting').with(
             'ensure' => 'present',
-            'line' => 'relayhost = smtprelay.localdomain',
+            'line' => 'relayhost = smtprelay.localdomain'
           )
         }
       end
@@ -35,7 +35,7 @@ describe 'postfix' do
         let (:params) {{ 'myorigin' => 'some.other.hostname' }}
         it { should contain_file_line('myorigin setting').with(
             'ensure' => 'present',
-            'line' => 'myorigin = some.other.hostname',
+            'line' => 'myorigin = some.other.hostname'
           )
         }
       end
