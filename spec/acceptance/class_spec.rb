@@ -1,6 +1,8 @@
 require 'spec_helper_acceptance'
+require 'specinfra'
 
 describe 'postfix class' do
+  let(:title) { 'postfix' }
 
   context 'default parameters' do
     # Using puppet_apply as a helper
@@ -25,6 +27,20 @@ describe 'postfix class' do
     describe process('master') do
       it { is_expected.to be_running }
     end
-
   end
+
+  describe 'service_ensure => stopped' do
+    it 'stops the service' do
+      apply_manifest("class { '::postfix': service_ensure => stopped, }", :catch_failures => true)
+      output = shell('service postfix status', :acceptable_exit_codes => [0,3])
+      expect(output.stdout).to match(/^.+not running$/)
+    end
+  end
+
+#  describe "relayhost => 'relay.localdomain'" do
+#    it 'sets the relayhost' do
+#      apply_manifest("class { '::postfix': relayhost = 'relay.localdomain', }", :catch_failures => true)
+       
+  end
+
 end
