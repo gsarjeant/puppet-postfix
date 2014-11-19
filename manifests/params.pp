@@ -4,9 +4,6 @@
 # It sets variables according to platform.
 #
 class postfix::params {
-  unless $caller_module_name == $module_name {
-    fail("This class is private and cannot be called from ${caller_module_name}.")
-  }
 
   case $::osfamily {
     'Debian','RedHat','Amazon': {}
