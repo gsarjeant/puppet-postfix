@@ -1,10 +1,14 @@
 # == Class postfix::params
 #
-# This class is meant to be called from postfix
-# It sets variables according to platform
+# This class is meant to be called from ::postfix.
+# It sets variables according to platform.
 #
 class postfix::params {
-  case $::osfamily {
+  unless $caller_module_name == $module_name {
+    fail("This class is private and cannot be called from ${caller_module_name}.")
+  }
+
+ case $::osfamily {
     'Debian','RedHat','Amazon': {}
     default: {
       fail("${::operatingsystem} not supported")
@@ -14,7 +18,7 @@ class postfix::params {
   $package_name = 'postfix'
   $package_ensure = 'installed'
 
-  $config = '/etc/postfix/master.conf'
+  $config = '/etc/postfix/main.cf'
 
   $service_name = 'postfix'
   $service_ensure = 'running'

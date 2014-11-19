@@ -1,11 +1,26 @@
 # == Class: postfix
 #
-# Full description of class postfix here.
+# Basic setup of the postfix MTA.
 #
 # === Parameters
 #
-# [*sample_parameter*]
-#   Explanation of what this parameter affects and what it defaults to.
+# [*relayhost*]
+#   Set the relayhost in main.cf
+#
+# [*package_name*]
+#   allow override of package name (default:postfix)
+#
+# [*package_ensure*]
+#   allow override of package ensure value (default: installed)
+#
+# [*service_name*]
+#   allow override of service name (default:postfix)
+#
+# [*service_ensure*]
+#   allow override of service ensure (default: running)
+#
+# [*service_enable*]
+#   allow override of service enable (default: true)
 #
 class postfix (
 
