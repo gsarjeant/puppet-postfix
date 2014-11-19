@@ -38,9 +38,16 @@ describe 'postfix class' do
   end
 
   describe "relayhost => 'relay.localdomain'" do
-    it 'sets the relayhost' do
+    it 'sets relayhost' do
       apply_manifest("class { '::postfix': relayhost => 'relay.localdomain', }", :catch_failures => true)
-      output = shell("egrep '^\s*relayhost\s*=\s*relay.localdomain$' /etc/postfix/main.cf")
+      output = shell("egrep '^\s*relayhost\s*=\s*relay\.localdomain$' /etc/postfix/main.cf")
+    end
+  end
+
+  describe "myorigin => 'some.other.domain'" do
+    it 'sets myorigin' do
+      apply_manifest("class { '::postfix': myorigin => 'some.other.domain', }", :catch_failures => true)
+      output = shell("egrep '^\s*myorigin\s*=\s*some\.other\.domain$' /etc/postfix/main.cf")
     end
   end
 

@@ -24,10 +24,18 @@ describe 'postfix' do
 
       describe 'set relayhost' do
         let (:params) {{ 'relayhost' => 'smtprelay.localdomain' }}
-        it { should contain_ini_setting('Postfix relayhost setting').with(
+        it { should contain_file_line('relayhost setting').with(
             'ensure' => 'present',
-            'setting' => 'relayhost',
-            'value' => 'smtprelay.localdomain'
+            'line' => 'relayhost = smtprelay.localdomain',
+          )
+        }
+      end
+
+      describe 'set myorigin' do
+        let (:params) {{ 'myorigin' => 'some.other.hostname' }}
+        it { should contain_file_line('myorigin setting').with(
+            'ensure' => 'present',
+            'line' => 'myorigin = some.other.hostname',
           )
         }
       end

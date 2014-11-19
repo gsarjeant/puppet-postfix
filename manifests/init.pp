@@ -5,26 +5,30 @@
 # === Parameters
 #
 # [*relayhost*]
-#   Set the relayhost in main.cf
+#   Set the relayhost in main.cf.
+#
+# [*myorigin*]
+#   Set the value of postfix's myorigin config setting.
 #
 # [*package_name*]
-#   allow override of package name (default:postfix)
+#   Allow override of package name (default:postfix).
 #
 # [*package_ensure*]
-#   allow override of package ensure value (default: installed)
+#   Allow override of package ensure value (default: installed).
 #
 # [*service_name*]
-#   allow override of service name (default:postfix)
+#   Allow override of service name (default:postfix).
 #
 # [*service_ensure*]
-#   allow override of service ensure (default: running)
+#   Allow override of service ensure (default: running).
 #
 # [*service_enable*]
-#   allow override of service enable (default: true)
+#   Allow override of service enable (default: true).
 #
 class postfix (
 
   $relayhost = undef,
+  $myorigin = undef,
   $package_name = $::postfix::params::package_name,
   $package_ensure = $::postfix::params::package_ensure,
   $service_name = $::postfix::params::service_name,
@@ -33,9 +37,10 @@ class postfix (
 
 ) inherits ::postfix::params {
 
-  if $relayhost { validate_re($relayhost, '^.+$') }
   multi_validate_re($package_name, $service_name, $service_ensure, '^.+$')
+  if $relayhost { validate_re($relayhost, '^.+$') }
   if $package_ensure { validate_re($package_ensure, '^.+$') }
+  if $myorigin { validate_re($myorigin, '^.+$') }
   validate_bool($service_enable)
 
   class { '::postfix::install': } ->
